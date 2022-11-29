@@ -1,0 +1,28 @@
+-- Example 0
+AABABB
+6
+0
+0
+
+4
+-- Example 1
+
+0
+4
+7
+
+0
+-- Example 2
+ABBABAABABBBABBBB
+17
+0
+0
+
+11
+-- Example 3
+AABAA
+17
+47474747
+1000000000
+
+10

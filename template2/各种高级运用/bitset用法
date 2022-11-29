@@ -1,0 +1,146 @@
+      bitset作为模板接受一个无符号正型模板参数，该参数用来表示一个二进制位的位数。一个bitset以有效地形式提供了最一般的用于二进制位操作的方式。然而，每个bitset通过合理地将一组二进制位封转到一个整型数组中来实现。另外，从一个bitset到一个数的唯一转换就是将其转化为一个unsigned long（通过函数to_ulong()）。
+
+一、bitset实例化方法
+      默认初始化（所有二进制位全部为0）、用整数初始化二进制位、用整个0、1字符串初始化、用部分0、1字符串初始化（有两种重载函数）
+   bitset<2> b0;
+   cout << "The set of bits in bitset<2> b0 is: ( "
+        << b0 << " )." << endl; //( 00 )
+
+   bitset<5> b1 ( 6 );
+   cout << "The set of bits in bitset<5> b1( 6 ) is: ( "
+        << b1 << " )." << endl; //( 00110 )，不足位数，前面补0
+
+   // The template parameter N can be an expresssion
+   bitset< 2 * sizeof ( int ) > b2;
+   cout << "The set of bits in bitset<2 * sizeof ( int ) > b2 is: ( "
+        << b2 << " )." << endl; //( 00000000 )
+
+   // The base two representation will be truncated, if its length exceeds the size of the bitset
+   bitset<3> b3 ( 6 );
+   cout << "The set of bits in bitset<3> b3( 6 ) is ( "
+        << b3 << " )." << endl; //( 110 )
+
+   string bitval4 ( "10011" );
+   bitset<5> b4 ( bitval4 );
+   cout << "The set of bits in bitset<5> b4( bitval4 ) is ( "
+        << b4 << " )." << endl; //( 10011 )
+
+   // Starting at position 3 for a length of 6
+   string bitval5 ("11110011011");
+   bitset<6> b5 ( bitval5, 3, 6 );
+   cout << "The set of bits in bitset<11> b5( bitval5, 3, 6 ) is ( "
+        << b5 << " )." << endl; //( 100110 )
+
+   // The bits not initialized with part of the string will default to zero
+   bitset<11> b6 ( bitval5, 3, 5 );
+   cout << "The set of bits in bitset<11> b6( bitval5, 3, 5 ) is ( "
+        << b6 << " )." << endl; //( 00000010011 )
+
+   // Starting at position 2 and continue to the end of the string
+   bitset<9> b7 ( bitval5, 2 );
+   cout << "The set of bits in bitset<9> b7( bitval, 2 ) is ( "
+        << b7 << " )." << endl; //( 110011011 )
+
+二、一些成员函数的用法
+【1】bool any() const; //如果其中至少有一位是1就返回true，如果所有位均为0则返回false
+   bitset<5> b1 ( 6 );
+   bool b, rb;
+
+   cout << "The original bitset b1( 6 ) is: ( "<< b1 << " )"<< endl;
+
+   b = b1.any ( );
+   if ( b )
+      cout << "At least one of the bits in bitset is set to 1."<< endl;
+   else
+      cout << "None of the bits in bitset are set to 1."<< endl;
+   
+   bitset<5> rb1;
+   rb1 = b1.reset ( );
+
+   cout << "The reset bitset is: ( "<< b1 << " )"<< endl;
+
+   rb = rb1.any ( );
+
+   if ( rb )
+      cout << "At least one of the bits in the reset bitset "<< "are set to 1." << endl;
+   else
+      cout << "None of the bits in bitset b1 are set to 1." << endl;
+【2】bool none( ) const; //如果所有位均是0返回true，否则返回false
+【3】bool test(size_t pos) const; //检测bitset的第pos位的二进制数，该位上是1的话返回true，否则返回false【如果pos超过bitset的大小就跑出out_of_range异常】
+【4】size_t size( ) const; //返回bitset的大小
+【5】size_t count( ) const; //返回bitset中位为1的个数
+    bitset<5> b(11);
+    cout << "The collection of bits in the original bitset is: ( "<< b1 << " )" << endl;
+
+    size_t i;
+    i = b.count();
+    cout << "The number of bits in the bitset set to 1 is: "<< i << "." << endl;
+【6】bitset<N>& reset( ); //重置，所有二进制位归0
+        bitset<N>& reset(int pos); //重置第pos位为0
+【7】bitset<N>& set( ); //Sets all the bits in a bitset to 1 
+        bitset<N>& set(int pos); //or sets a bit at a specified position to 1
+【8】bitset<N>& flip( ); //切换bitset的所有位值（即1变成0,0变成1——取反操作）
+        bitset<N>& flip( int pos ); //切换在指定位置的位值
+【9】字段element_type：typedef bool element_type;
+   bitset<3> b1 ( 2 );
+   cout << "Original bitset b1(6) is: ( "<< b1 << " )"<< endl;
+
+   bool b;
+   bitset<5>::element_type e;
+
+   b = b1.test ( 2 );
+   if ( b )
+      cout << "The bit at position 2 of bitset b1"<< "has a value of 1." << endl;
+   else
+      cout << "The bit at position 2 of bitset b1"<< "has a value of 0." << endl;
+
+   b1[2] = 1;
+   cout << "Bitset b1 modified by b1[2] = 1 is: ( "<< b1 << " )"<< endl;
+   
+   e = b1.test ( 2 );
+   if ( e )
+      cout << "The bit at position 2 of bitset b1"<< "has a value of 1." << endl;
+【10】to_string(); //转换成字符串
+【11】to_ulong(); //转换成无符号的长正型数
+   bitset<5> b1 ( 7 );
+   unsigned long int i;
+
+   i = b1.to_ulong( );
+
+三、operator操作
+operator[]
+
+operator&
+operator|
+operator~ 取反
+
+operator&=
+operator|=
+
+operator^=
+operator^ 异或
+
+operator<<= 左移
+operator>>= 右移
+
+
+operator!= 不等于
+operator== 恒等于
+
+
+   bitset<4> b1 ( string("0101") );
+   bitset<4> b2 ( string("0011") );
+   bitset<4> b3 = b1 ^ b2;
+
+   bitset<5> b1 ( 7 );
+   cout << "The target bitset b1 is: ( "<< b1 << " )." << endl;
+   b1 <<= 2;
+   cout << "After shifting the bits 2 positions to the left,\n"<< " the target bitset b1 becomes: ( "<< b1 << " )." <<endl;
+
+bitset<5> b1 ( 7 );
+   bitset<5> b2;
+   b2 = ~b1;
+
+   bitset<5> b1 ( 7 );
+   bitset<5> b2 ( 11 );
+   b1 |= b2;

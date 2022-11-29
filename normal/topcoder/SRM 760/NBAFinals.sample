@@ -1,0 +1,67 @@
+-- Example 0
+7
+2
+2
+3
+3
+2
+4
+2
+RRWWRWR
+
+1
+-- Example 1
+7
+2
+2
+3
+3
+2
+3
+3
+RRWWRWR
+
+0
+-- Example 2
+2
+0
+3
+WR
+
+1
+-- Example 3
+3
+3
+0
+0
+RWR
+
+0
+-- Example 4
+4
+0
+0
+0
+0
+????
+
+1
+-- Example 5
+4
+3
+2
+3
+2
+?WR?
+
+1
+-- Example 6
+5
+0
+1
+2
+3
+4
+R?W?R
+
+1
