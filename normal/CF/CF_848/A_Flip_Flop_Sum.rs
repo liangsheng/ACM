@@ -1,0 +1,36 @@
+use std::cmp::max;
+use std::io::{BufWriter, stdin, stdout, Write};
+
+#[derive(Default)]
+struct Scanner {
+    buffer: Vec<String>
+}
+
+impl Scanner {
+    fn next<T: std::str::FromStr>(&mut self) -> T {
+        loop {
+            if let Some(token) = self.buffer.pop() {
+                return token.parse().ok().expect("Failed parse");
+            }
+            let mut input = String::new();
+            stdin().read_line(&mut input).expect("Faild read");
+            self.buffer = input.split_whitespace().rev().map(String::from).collect();
+        }
+    }
+}
+
+fn main() {
+    let mut scan = Scanner::default();
+    let out = &mut BufWriter::new(stdout());
+
+    for _ in 0..(scan.next::<usize>()) {
+        let n = scan.next::<usize>();
+        let a: Vec<i32> = (0..n).map(|_| scan.next::<i32>()).collect::<Vec<_>>();
+        let sum = a.iter().sum::<i32>();
+        let mut ans = -100000;
+        for i in 0..(n - 1) {
+            ans = max(ans, sum - 2 * a[i] - 2 * a[i + 1]) 
+        }
+        writeln!(out, "{}", ans).ok();
+    }
+}
