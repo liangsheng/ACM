@@ -1,5 +1,6 @@
-use std::cmp::{max};
+// #![allow(dead_code, unused_variables, dead_code, unused_mut)]
 use std::io::{BufWriter, stdin, stdout, Write};
+use std::cmp::{max};
 
 #[derive(Default)]
 struct Scanner {
