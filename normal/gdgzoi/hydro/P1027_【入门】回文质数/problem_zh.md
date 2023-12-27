@@ -49,6 +49,8 @@ for (d1 = 1; d1 <= 9; d1+=2) {    // 只有奇数才会是素数
 * 提示-3：可以考虑枚举回文数的前一半 i，然后将 i 翻转得到 inv_i，然后将 i 和 inv_i 组合起来
 </details>
 
+# 来源
+* [luogu_P1217_回文质数](https://www.luogu.com.cn/problem/P1217)
 # 数据规模与限制
 * $5 \le a < b \le 10^9$
 * 1s, 1024KiB for each test case.

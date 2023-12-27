@@ -1,16 +1,16 @@
 # 0、正确答案
 * 如果看不见代码，可以点击登录
-* [P1000【入门】Hello World!](http://43.136.49.238/d/gzezoi2023/record/6564943df7726adb17dd76aa)
-* [P1001【入门】四则运算](http://43.136.49.238/d/gzezoi2023/record/65461976f7726adb17dd0b5a)
-* [P1002【入门】翻转三位数](http://43.136.49.238/d/gzezoi2023/record/656495a3f7726adb17dd76c9)
-* [P1003【入门】三个数排序](http://43.136.49.238/d/gzezoi2023/record/65465a4cf7726adb17dd0ca6)
-* [P1004【入门】水仙花数](http://43.136.49.238/d/gzezoi2023/record/65465fa3f7726adb17dd0cbd)
-* [P1005【入门】求和](http://43.136.49.238/d/gzezoi2023/record/6546fa62f7726adb17dd0cf8)
-* [P1006【入门】判断素数](http://43.136.49.238/d/gzezoi2023/record/65472010f7726adb17dd0d2b)
-* [P1007【入门】输出棋盘](http://43.136.49.238/d/gzezoi2023/record/654742bdf7726adb17dd0d4e)
-* [P1008【入门】角谷猜想](http://43.136.49.238/d/gzezoi2023/record/654746a9f7726adb17dd0d63)
-* [P1009【入门】最大公约数](http://43.136.49.238/d/gzezoi2023/record/65474f62f7726adb17dd0d80)
-* [P1010【入门】分解质因数](http://43.136.49.238/d/gzezoi2023/record/6547565bf7726adb17dd0d9a)
+* [P1000【入门】Hello World!](http://www.gzezoi.cn/d/gzezoi2023/record/6564943df7726adb17dd76aa)
+* [P1001【入门】四则运算](http://www.gzezoi.cn/d/gzezoi2023/record/65461976f7726adb17dd0b5a)
+* [P1002【入门】翻转三位数](http://www.gzezoi.cn/d/gzezoi2023/record/656495a3f7726adb17dd76c9)
+* [P1003【入门】三个数排序](http://www.gzezoi.cn/d/gzezoi2023/record/65465a4cf7726adb17dd0ca6)
+* [P1004【入门】水仙花数](http://www.gzezoi.cn/d/gzezoi2023/record/65465fa3f7726adb17dd0cbd)
+* [P1005【入门】求和](http://www.gzezoi.cn/d/gzezoi2023/record/6546fa62f7726adb17dd0cf8)
+* [P1006【入门】判断素数](http://www.gzezoi.cn/d/gzezoi2023/record/65472010f7726adb17dd0d2b)
+* [P1007【入门】输出棋盘](http://www.gzezoi.cn/d/gzezoi2023/record/654742bdf7726adb17dd0d4e)
+* [P1008【入门】角谷猜想](http://www.gzezoi.cn/d/gzezoi2023/record/654746a9f7726adb17dd0d63)
+* [P1009【入门】最大公约数](http://www.gzezoi.cn/d/gzezoi2023/record/65474f62f7726adb17dd0d80)
+* [P1010【入门】分解质因数](http://www.gzezoi.cn/d/gzezoi2023/record/6547565bf7726adb17dd0d9a)
 # 1、语法问题（编译错误）
 ## 1-1、请对齐代码，有大括号记得缩进！！！
 * 代码对齐，记得缩进

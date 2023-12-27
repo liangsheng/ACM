@@ -1,0 +1,5 @@
+# 题目类型，可以为 default(比对输出，可以含spj), objective(客观题), interactive(交互题)
+type: default
+
+# 全局时空限制（此处的限制优先级低于测试点的限制）
+time: 4s
