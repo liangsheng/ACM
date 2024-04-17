@@ -51,6 +51,45 @@
 <details>
 <summary><font color="#FF0000">请思考后再点击查看提示</font></summary>
 
+* 只有 $2$ 和 $3$，以及 $9$ 和 $0$，在加 $1$ 的情况下用到的短线数是一样的
+* 所以答案只可能是 $1$ 或者 $2$
+* 所以只要 $[l, r]$ 之间有末尾是 $2$ 的数，答案就是 $2$（当然还有其他情况，比如 $29 \rightarrow 30$）
+* 那么直接枚举 $l$ 到 $min(l + 10, r)$，查看答案是否可以为 $2$
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long LL;
+
+// 计算 x 需要的短线数
+int f(LL x) {
+	int q[10] = {6, 2, 5, 5, 4, 5, 6, 3, 7, 6};
+	int ans = 0;
+	while (x != 0) ans += q[x % 10], x /= 10;
+	return ans;	
+}
+
+int gao(LL l, LL r) {
+	for (LL i = l; i + 1 <= r; i++) {
+        if (f(i) == f(i + 1)) return 2;
+    }
+	return 1;
+}
+
+int main() {
+    // 下面 2 句话是为了让 cin 更快，不理解可以先不写
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+	LL T, l, r;
+    cin >> T;
+	while (T--) {
+        cin >> l >> r;
+        cout << gao(l, r) << '\n';
+    }
+	return 0;
+}
+```
+
 </details>
 
 # 数据规模与限制

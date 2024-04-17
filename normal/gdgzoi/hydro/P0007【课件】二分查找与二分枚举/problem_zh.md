@@ -150,7 +150,7 @@ int main() {
     // 切割出来的绳子最短是 l = 1, 最长是绳子的最大值
     int l = 1, r = *max_element(a.begin(), a.end()), mid;
     while (l != r) {
-        mid = (l + r) / 2 + 1;  // 注意: 这里要 +1, 不然会死循环
+        mid = (l + r + 1) / 2;  // 注意: 这里要 +1, 不然会死循环
         if (C(mid)) l = mid;    // 如果 mid 满足条件, 则解必然大于等于 mid, 解的范围变成 [mid, r]
         else r = mid - 1;       // 如果 mid 不满足条件, 解的范围变成 [l, mid - 1]
     }
@@ -177,7 +177,6 @@ int main() {
 * 1、首先判断问题的答案是否满足二分性质，是求 **<font color="#FF0000">最大值最小</font>**，还是求 **<font color="#FF0000">最小值最大</font>**
 * 2、确定边界 $l, r$
 * 3、确定判定逻辑（通常是一个贪心算法）
-
 
 我们来看一个最大值最小的例子：[【入门】分割数组的最大值](http://www.gzezoi.cn/d/gzezoi2023/p/P1072)
 
@@ -242,6 +241,15 @@ int main() {
     return 0;
 }
 ```
+**<font color="#FF0000">最大值最小问题的解答模板</font>**
+```c++
+while (l != r) {
+    mid = (l + r) / 2;    // 注意：里没有 +1
+    if (C(mid)) r = mid;  // [l, r] => [l, mid]
+    else l = mid + 1;     // [l, r] => [mid + 1, r]
+}
+```
+
 ## 2-3、最小值最大问题
 再来看另一个最大值最小的例子：[【入门】分割数组的最小值](http://www.gzezoi.cn/d/gzezoi2023/p/P1074)
 
@@ -283,7 +291,7 @@ int solve(vector<int>& a, int k) {
 
     // 二分枚举答案, 这里是求最小值最大, 注意边界
     while (l != r) {
-        mid = (l + r) / 2 + 1;  // 注意, 求最小值最大, 这里需要 + 1
+        mid = (l + r + 1) / 2;  // 注意, 求最小值最大, 这里需要 + 1
         if (gao(mid)) l = mid;  // mid 满足条件, l = mid
         else r = mid - 1;       // mid 不满足条件, r = mid - 1
     }
@@ -312,6 +320,15 @@ int main() {
     return 0;
 }
 ```
+**<font color="#FF0000">最小值最大问题的解答模板</font>**
+```c++
+while (l != r) {
+    mid = (l + r + 1) / 2;  // 注意：这里 +1
+    if (C(mid)) l = mid;  // [l, r] => [mid, r]
+    else r = mid - 1;     // [l, r] => [l, mid - 1]
+}
+```
+
 ## 2-4、浮点数二分
 * 前面的题目，我们用来二分的答案都是整数
 * 其实，浮点数也可以用来二分

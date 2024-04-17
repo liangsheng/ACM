@@ -19,6 +19,7 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     fill(ans.begin(), ans.end(), 1000);
+    // 暴力计算 150 以内的最优解
     dfs(0, 0, 0);
     // for (int i = 1; i <= 300; i++) {
     //     int res = 0, d = i;
@@ -43,8 +44,11 @@ int main() {
             }
             return res;
         };
+
+        // 150 以内输出暴力的结果
         if (n < 150) cout << ans[n] << '\n';
         else {
+            // 贪心 + 暴力
             int d = n / 15;
             int res = d + gao(n - d * 15);
             for (int i = 1; i <= 10; i++) {

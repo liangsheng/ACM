@@ -62,6 +62,81 @@
 <details>
 <summary><font color="#FF0000">请思考后再点击查看提示</font></summary>
 
+* 考虑如下贪心策略：尽可能多的选择面值大的硬币
+* 然而这个策略不一定对，比如 12 = 10 + 1 + 1，需要 3 个硬币，但是 12 = 6 + 6，只需要 2 个硬币
+* 所有有时候你并 **<font color="#FF0000">不一定要优先选择面值大的硬币</font>**
+* 但这个贪心策略是比较接近最优解的（可以通过暴力打标观察）
+* 比如按照贪心策略 $50=15*3+3*1+1*2$，50 需要 6 个硬币
+* 但其实最优解是 $50 = 15*2+10*2$，50 只需要 4 个硬币
+* 假设按照贪心策略需要 $x$ 个面值为 15 的硬币，而最优解需要 $y$ 个面值为 15 的硬币
+* **<font color="#FF0000">必然有 $x \geq y$，而且 $x - y$ 不会很大</font>**
+* 我们可以适当的枚举这个差值 $x - y$
+* 先贪心地选择面值为 15 的硬币，当 $n$ 变得不太大以后，再暴力求最优解
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+
+const int N = 350;
+
+vector<int> a = {1, 3, 6, 10, 15};
+vector<int> ans(N + 1);
+
+void dfs(int p, int sum, int cnt) {
+    if (p == 5) {
+        ans[sum] = min(ans[sum], cnt);
+        return ;
+    }
+    for (int i = 0; i <= 10; i++) dfs(p + 1, sum + a[p] * i, cnt + i);
+}
+
+int main() {
+    // 下面 2 句话是为了让 cin 更快，不理解可以先不写
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    fill(ans.begin(), ans.end(), 1000);
+    // 暴力计算 150 以内的最优解
+    dfs(0, 0, 0);
+    // for (int i = 1; i <= 300; i++) {
+    //     int res = 0, d = i;
+    //     for (int j = 4; j >= 0; j--) {
+    //         int c = d / a[j];
+    //         res += c, d -= c * a[j];
+    //     }
+    //     if (res != ans[i]) {
+    //         cout << i << ' ' << ans[i] << ' ' << res << '\n';
+    //     }
+    // }
+    int T, n;
+    cin >> T;
+    while (T--) {
+        cin >> n;
+
+        auto gao = [&](int d) {
+            int res = 0;
+            for (int j = 3; j >= 0; j--) {
+                int c = d / a[j];
+                res += c, d -= c * a[j];
+            }
+            return res;
+        };
+
+        // 150 以内输出暴力的结果
+        if (n < 150) cout << ans[n] << '\n';
+        else {
+            // 贪心 + 暴力
+            int d = n / 15;
+            int res = d + gao(n - d * 15);
+            for (int i = 1; i <= 10; i++) {
+                res = min(res, d - i + ans[n - (d - i) * 15]);
+            }
+            cout << res << '\n';
+        } 
+    }
+    return 0;
+}
+```
+
 </details>
 
 # 数据规模与限制

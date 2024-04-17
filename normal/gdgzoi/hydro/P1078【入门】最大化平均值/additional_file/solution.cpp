@@ -8,16 +8,16 @@ int main() {
     
     int n, k;
     cin >> n >> k;
-    vector<int> v(n), w(n);
-    for (int i = 0; i < n; i++) cin >> v[i];
+    vector<int> w(n), v(n);
     for (int i = 0; i < n; i++) cin >> w[i];
+    for (int i = 0; i < n; i++) cin >> v[i];
 
     double l = 0, r = 1000000000, mid;
 
     // 计算 sum(v_i + mid * w_i) 是否 >= 0
     auto ok = [&](double mid) {
         vector<double> c(n);
-        for (int i = 0; i < n; i++) c[i] = v[i] - mid * w[i];
+        for (int i = 0; i < n; i++) c[i] = w[i] - mid * v[i];
         sort(c.begin(), c.end());
         double sum = 0;
         for (int i = 1; i <= k; i++) sum += c[n - i];
@@ -38,10 +38,10 @@ int main() {
     // vector<int> c(n);
     // for (int i = 0; i < n; i++) c[i] = i;
     // sort(c.begin(), c.end(), [&](const int& x, const int& y) {
-    //     return v[x] * w[y] > v[y] * w[x];
+    //     return w[x] * v[y] > w[y] * v[x];
     // });
     // double p = 0, q = 0;
-    // for (int i = 0; i < k; i++) p += v[c[i]], q += w[c[i]];
+    // for (int i = 0; i < k; i++) p += w[c[i]], q += v[c[i]];
     // cout << fixed << setprecision(2) << p / q << '\n';
     return 0;
 }
