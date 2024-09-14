@@ -2,7 +2,7 @@
 using namespace std;
 typedef long long LL;
 
-// 统计 0 到 x 合法的数的个数
+// 统计 [0, x - 1] 中合法的数的个数， 也就是比 x 小的合法的个数
 LL cal(LL x) {
     vector<int> a;
     while (x != 0) a.push_back(x % 10), x /= 10;
