@@ -33,5 +33,5 @@
 .vscode
 .cph
 
-.zip
-.ans
+*.zip
+*.ans
