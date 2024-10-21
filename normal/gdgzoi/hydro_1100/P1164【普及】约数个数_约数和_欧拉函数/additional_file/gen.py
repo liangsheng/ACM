@@ -5,18 +5,17 @@
 from cyaron import *
 import random
 
-N = [5, 100, 100, 1000, 10000, 100000, 1000000, 10000000]
+N = [5, 10, 100, 1000, 10000, 100000, 1000000, 1000000]
 M = [5, 25, 25, 168, 1229, 9592, 78498, 664579]
 T = len(N) - 1
 
 for i in range(1, T + 1):
     io = IO(file_prefix="", data_id=i)
 
-    # n = randint(N[i - 1], N[i])
-    io.input_writeln(N[i], 5)
-    for j in range(5):
-        io.input_writeln(M[i] - j)
-    # n, q = N[i], N[i]
+    io.input_writeln(5)
+    for _ in range(5):
+        io.input_writeln(randint(N[i] // 10, N[i]))
+
     # io.input_writeln(n, q)
     # a = [randint(1, M[i]) for _ in range(n)]
     # io.input_writeln(a)

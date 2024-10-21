@@ -48,10 +48,13 @@ void init(string& s) {
     }
 }
 
+// 从 1 开始编号
 bool ok(int i, int j) {
+    // lj, li 是树状数组的东西, 记得删除
     int lj = query(a, j, -1), li = query(a, i - 1, -1);
     int x = ((LL) d[n - j] * (L[j] - L[i - 1] + lj - li) % MOD + MOD) % MOD;
 
+    // rj, ri 是树状数组的东西, 记得删除
     int ri = query(b, i, 1), rj = query(b, j + 1, 1);
     int y = ((LL) d[i - 1] * (R[i] - R[j + 1] + ri - rj) % MOD + MOD) % MOD; 
     return x == y;
